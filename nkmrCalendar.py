@@ -75,6 +75,8 @@ def main():
         orderBy='startTime').execute()
     events = eventsResult.get('items', [])
 
+    slack_url='hooks.slack.com~'
+
     if not events:
         print('No upcoming events found.')
  
@@ -82,8 +84,6 @@ def main():
     now=datetime.datetime.now()
     print(now)
     
-
-    slack_url='hooks.slack.com~'
 
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
